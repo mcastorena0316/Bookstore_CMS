@@ -33,6 +33,7 @@
 
 ## Table of Contents
 
+- [Live Demo [here][demo]](#live-demo-here)
 - [Specifications](#specifications)
   - [The Project](#the-project)
 - [Features](#features)
@@ -64,6 +65,7 @@ Magic-books Inc. is a fictional company based in Germany. They have requested he
 - React-DOM
 - React-Create-App
 - Redux
+- PropTypes
 - ES6 syntax
 - Export/import ES6+ notation
 
