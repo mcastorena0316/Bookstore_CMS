@@ -38,9 +38,9 @@
   - [The Project](#the-project)
 - [Features](#features)
 - [Built With](#built-with)
-- [Getting Started](#getting-started)
+- [How to run this project](#how-to-run-this-project)
   - [Prerequisites](#prerequisites)
-  - [Quick Start](#quick-start)
+  - [Installing the project](#installing-the-project)
   - [Available Scripts](#available-scripts)
     - [`npm start`](#npm-start)
     - [`npm run build`](#npm-run-build)
@@ -58,7 +58,7 @@
 
 ## The Project
 
-Magic-books Inc. is a fictional company based in Germany. They have requested your help to build the front-end of an application that will help them organize and manage their bookstore. They want it to be fast, dynamic and responsive to their actions and therefore you decided to build it with React & Redux.
+Magic-books Inc. is a fictional company based in Germany. They have requested help to build the front-end of an application that will help them organize and manage their bookstore. They want it to be fast, dynamic and responsive to their actions and therefore we decided to build it with React & Redux.
 
 - Linters
 - React
@@ -68,28 +68,24 @@ Magic-books Inc. is a fictional company based in Germany. They have requested yo
 - ES6 syntax
 - Export/import ES6+ notation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # Features
 
 - Basic `create-react-app` structure
-- CSS Modules
 - Sets `stickler` on the repo
 - Sets `eslint` rules
 
 # Built With
 
 - `create-react-app`
-- `CSS Modules` and `flex` from **CSS3**
 - `ESLint`
 - `npm`
 - `vscode` with _ESLint_ extension
 - Linux/GNU
 - Love and Passion for code
 
-# Getting Started
+# How to run this project
 
-Create React App is an officially supported way to create single-page React applications. It offers a modern build setup with no configuration.
+We used `create-react-app` to initialize this project, so it is configurated to be easy to run. Just follow this instructions.
 
 ## Prerequisites
 
@@ -98,11 +94,13 @@ Create React App is an officially supported way to create single-page React appl
 - A Text Editor like VSCode
 - A browser like Firefox or Chrome
 
-## Quick Start
+## Installing the project
+
+Now that you are set up, open a terminal and:
 
 ```
 git clone https://github.com/mcastorena0316/Bookstore_CMS.git
-cd Owly-Bookstore
+cd Bookstore_CMS
 npm i && npm start
 ```
 
