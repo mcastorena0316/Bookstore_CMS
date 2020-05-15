@@ -52,7 +52,7 @@
 
 # Live Demo [here][demo]
 
-[![App](docs/app.png)][demo]
+[![App](public/app.png)][demo]
 
 # Specifications
 
@@ -241,4 +241,4 @@ Feel free to fork this project and improve it
 [framework-url]: https://reactjs.org/
 [contributions-welcome]: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=for-the-badge
 [badge-license]: https://img.shields.io/:license-mit-blue.svg?style=for-the-badge
-[demo]: https://owly-bookstore.herokuapp.com/
+[demo]: https://bookstorecms.herokuapp.com/
