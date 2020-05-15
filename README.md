@@ -33,7 +33,6 @@
 
 ## Table of Contents
 
-- [Live Demo [here][demo]](#live-demo-here)
 - [Specifications](#specifications)
   - [The Project](#the-project)
 - [Features](#features)
