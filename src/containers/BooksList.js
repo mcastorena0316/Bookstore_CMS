@@ -33,6 +33,7 @@ class BooksList extends Component {
               <tr key={book.id}>
                 <td>
                   <Book
+                    id={book.id}
                     category={book.category}
                     title={book.title}
                     pages={book.pages}

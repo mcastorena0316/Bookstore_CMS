@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
  */
 const Book = props => {
   const {
-    category, title, author, pages, progress, summary,
+    id, category, title, author, pages, progress, summary,
   } = props;
   const calculateProgress = (numerator, denominator) => {
     if (denominator === 0) return 0;
@@ -23,6 +23,7 @@ const Book = props => {
         <h6>{category}</h6>
         <h1>{title}</h1>
         <span>{author}</span>
+        <span>{id}</span>
       </div>
       <div className="progress">
         <div className="ring" />
@@ -43,6 +44,7 @@ const Book = props => {
 };
 
 Book.defaultProps = {
+  id: 0,
   category: 'Action',
   title: 'Example Title',
   author: 'Example Author',
@@ -52,6 +54,7 @@ Book.defaultProps = {
 };
 
 Book.propTypes = {
+  id: PropTypes.number,
   category: PropTypes.string,
   title: PropTypes.string,
   author: PropTypes.string,
