@@ -4,7 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import booksReducer from './reducers/books';
+import rootReducer from './reducers';
 
 const testingBooks = [{
   category: 'Biography',
@@ -24,8 +24,7 @@ const testingBooks = [{
   id: Math.floor(Math.random() * 10000),
 }];
 
-const store = createStore(booksReducer);
-
+const store = createStore(rootReducer(testingBooks));
 
 ReactDOM.render(
   <React.StrictMode>

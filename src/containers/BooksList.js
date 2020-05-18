@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
 
@@ -7,53 +8,36 @@ import Book from '../components/Book';
  * A table with book
  */
 
-class BooksList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentBooks: [],
-    };
-  }
-
-  componentDidMount() {
-    const { category, books } = this.props;
-    const filtered = category === 'All' ? books : books.filter(book => book.category === category);
-    this.setState({
-      currentBooks: filtered,
-    });
-  }
-
-  render() {
-    const { currentBooks } = this.state;
-    if (currentBooks.length >= 1) {
-      return (
-        <table>
-          <tbody>
-            {currentBooks.map(book => (
-              <tr key={book.id}>
-                <td>
-                  <Book
-                    id={book.id}
-                    category={book.category}
-                    title={book.title}
-                    pages={book.pages}
-                    progress={book.progress}
-                    summary={book.summary}
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    }
+const BooksList = ({ category, books }) => {
+  const filtered = category === 'All' ? books : books.filter(book => book.category === category);
+  if (filtered.length >= 1) {
     return (
-      <div>
-        Please add a Book!
-      </div>
+      <table>
+        <tbody>
+          {filtered.map(book => (
+            <tr key={book.id}>
+              <td>
+                <Book
+                  id={book.id}
+                  category={book.category}
+                  title={book.title}
+                  pages={book.pages}
+                  progress={book.progress}
+                  summary={book.summary}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     );
   }
-}
+  return (
+    <div>
+      Please add a Book!
+    </div>
+  );
+};
 
 BooksList.defaultProps = {
   category: 'All',
@@ -71,8 +55,12 @@ BooksList.propTypes = {
       pages: PropTypes.number,
       progress: PropTypes.number,
       summary: PropTypes.string,
-    }),
+    }).isRequired,
   ),
 };
 
-export default BooksList;
+const mapStateToProps = state => ({
+  books: state.books,
+});
+
+export default connect(mapStateToProps, null)(BooksList);

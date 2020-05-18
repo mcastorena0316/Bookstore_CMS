@@ -75,6 +75,10 @@ Magic-books Inc. is a fictional company based in Germany. They have requested he
 - Sets `stickler` on the repo
 - Sets `eslint` rules
 
+## `ESlint` test
+
+![ESlint](public/eslint.png)
+
 # Built With
 
 - `create-react-app`
