@@ -8,9 +8,9 @@ const testingBooks = [{
   title: 'Hillary Clinton',
   author: 'Hillary Clinton',
   pages: 4231,
-  progress: 2,
+  progress: 200,
   summary: 'This is a biography about Hillary Clinton',
-  id: Math.random(),
+  id: Math.floor(Math.random() * 10000),
 }, {
   category: 'Horror',
   title: 'The shining',
@@ -18,7 +18,7 @@ const testingBooks = [{
   pages: 213,
   progress: 52,
   summary: 'Horror story about a haunted hotel',
-  id: Math.random(),
+  id: Math.floor(Math.random() * 10000),
 }];
 
 function App() {
