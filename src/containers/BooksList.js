@@ -7,7 +7,7 @@ import Book from '../components/Book';
  * A table with book
  */
 
-export class BooksList extends Component {
+class BooksList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,7 @@ export class BooksList extends Component {
 
   componentDidMount() {
     const { category, books } = this.props;
-    const filtered = category === 'all' ? books : books.filter(book => book.category === category);
+    const filtered = category === 'All' ? books : books.filter(book => book.category === category);
     this.setState({
       currentBooks: filtered,
     });
@@ -55,7 +55,7 @@ export class BooksList extends Component {
 }
 
 BooksList.defaultProps = {
-  category: 'all',
+  category: 'All',
   books: [],
 };
 

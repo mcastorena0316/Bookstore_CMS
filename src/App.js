@@ -1,5 +1,6 @@
 import React from 'react';
-import BookList from './containers/BooksList';
+import BooksList from './containers/BooksList';
+import BookForm from './containers/BookForm';
 
 
 const testingBooks = [{
@@ -23,10 +24,11 @@ const testingBooks = [{
 function App() {
   return (
     <div className="App">
-      <BookList
+      <BooksList
         books={testingBooks}
         category="All"
       />
+      <BookForm />
     </div>
   );
 }
