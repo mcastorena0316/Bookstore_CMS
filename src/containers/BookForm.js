@@ -41,55 +41,61 @@ class BookForm extends Component {
       progress: e.target.progress.value,
       summary: e.target.summary.value,
     };
+    // eslint-disable-next-line no-console
     console.log(formData);
     this.setState(defaultState);
   }
 
   render() {
     const { handleSubmit, handleChange, state } = this;
-    const { category } = state;
+    const {
+      category, title, author, pages, progress, summary,
+    } = state;
     return (
       <div>
         <h4>ADD NEW BOOK</h4>
         <form onSubmit={handleSubmit}>
           <input
             id="title"
+            value={title}
             placeholder="Book Title"
             onChange={e => handleChange('title', e.target.value)}
           />
           <select
             id="category"
             onChange={e => handleChange('category', e.target.value)}
-            defaultValue="Action"
+            value={category}
           >
             {categories.map(thisCategory => (
               <option
                 key={Math.random()}
                 value={thisCategory}
-                selected={category === thisCategory}
               >
-                {category}
+                {thisCategory}
               </option>
             ))}
           </select>
           <input
             id="pages"
+            value={pages}
             placeholder="# Pages"
             onChange={e => handleChange('pages', e.target.value)}
           />
           <input
             id="progress"
+            value={progress}
             placeholder="Current Page"
             onChange={e => handleChange('progress', e.target.value)}
           />
           <input
             id="author"
+            value={author}
             placeholder="Author"
             onChange={e => handleChange('author', e.target.value)}
           />
-          <input
+          <textarea
             id="summary"
-            type="textarea"
+            value={summary}
             placeholder="Summary"
             onChange={e => handleChange('summary', e.target.value)}
           />

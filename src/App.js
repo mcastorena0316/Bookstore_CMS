@@ -1,36 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BooksList from './containers/BooksList';
 import BookForm from './containers/BookForm';
 
 
-const testingBooks = [{
-  category: 'Biography',
-  title: 'Hillary Clinton',
-  author: 'Hillary Clinton',
-  pages: 4231,
-  progress: 200,
-  summary: 'This is a biography about Hillary Clinton',
-  id: Math.floor(Math.random() * 10000),
-}, {
-  category: 'Horror',
-  title: 'The shining',
-  author: 'Stephen King',
-  pages: 213,
-  progress: 52,
-  summary: 'Horror story about a haunted hotel',
-  id: Math.floor(Math.random() * 10000),
-}];
-
-function App() {
+function App({ books = [] }) {
   return (
     <div className="App">
       <BooksList
-        books={testingBooks}
+        books={books}
         category="All"
       />
       <BookForm />
     </div>
   );
 }
+
+App.propTypes = {
+  books: PropTypes.PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      category: PropTypes.string,
+      author: PropTypes.string,
+      title: PropTypes.string,
+      pages: PropTypes.number,
+      progress: PropTypes.number,
+      summary: PropTypes.string,
+    }),
+  ),
+};
+
+App.defaultProps = {
+  books: [],
+};
+
 
 export default App;
