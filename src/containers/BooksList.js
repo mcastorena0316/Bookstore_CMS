@@ -6,6 +6,7 @@ import Book from '../components/Book';
  * BookList
  * A table with book
  */
+
 export class BooksList extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +17,7 @@ export class BooksList extends Component {
 
   componentDidMount() {
     const { category, books } = this.props;
-    const filtered = books.filter(book => book.category === category);
+    const filtered = category === 'all' ? books : books.filter(book => book.category === category);
     this.setState({
       currentBooks: filtered,
     });
@@ -24,22 +25,31 @@ export class BooksList extends Component {
 
   render() {
     const { currentBooks } = this.state;
+    if (currentBooks.length >= 1) {
+      return (
+        <table>
+          <tbody>
+            {currentBooks.map(book => (
+              <tr key={book.id}>
+                <td>
+                  <Book
+                    category={book.category}
+                    title={book.title}
+                    pages={book.pages}
+                    progress={book.progress}
+                    summary={book.summary}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      );
+    }
     return (
-      <table>
-        {currentBooks.map(book => (
-          <tr key={book.id}>
-            <td>
-              <Book
-                category={book.category}
-                title={book.title}
-                pages={book.pages}
-                progress={book.progress}
-                summary={book.summary}
-              />
-            </td>
-          </tr>
-        ))}
-      </table>
+      <div>
+        Please add a Book!
+      </div>
     );
   }
 }
@@ -55,6 +65,7 @@ BooksList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       category: PropTypes.string,
+      author: PropTypes.string,
       title: PropTypes.string,
       pages: PropTypes.number,
       progress: PropTypes.number,
