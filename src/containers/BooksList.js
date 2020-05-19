@@ -68,7 +68,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  eraseBook: id =>  dispatch(removeBook(id)),
+  eraseBook: id => dispatch(removeBook(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksList);

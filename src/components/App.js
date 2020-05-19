@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BooksList from './containers/BooksList';
-import BookForm from './containers/BookForm';
+import BooksList from '../containers/BooksList';
+import BookForm from '../containers/BookForm';
 
 
 function App({ books = [] }) {

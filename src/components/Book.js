@@ -1,18 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 /**
  * Book
  *
  * Book component shows the information regarding
  * a book
- * @param {Object} props Data from parent
+ * @param {Object} book Data from parent
  * @return {React.Component} Book
  */
-const Book = props => {
+
+const Book = book => {
   const {
     id, category, title, author, pages, progress, summary, eraseBook,
-  } = props;
+  } = book;
 
   const calculateProgress = (numerator, denominator) => {
     if (denominator === 0) return 0;
@@ -47,26 +48,5 @@ const Book = props => {
   );
 };
 
-Book.defaultProps = {
-  id: 0,
-  category: 'Action',
-  title: 'Example Title',
-  author: 'Example Author',
-  pages: 10,
-  progress: 2,
-  summary: 'Describe your Book!',
-  eraseBook: () => {},
-};
-
-Book.propTypes = {
-  id: PropTypes.number,
-  category: PropTypes.string,
-  title: PropTypes.string,
-  author: PropTypes.string,
-  pages: PropTypes.number,
-  progress: PropTypes.number,
-  summary: PropTypes.string,
-  eraseBook: PropTypes.func,
-};
 
 export default Book;

@@ -33,6 +33,7 @@ class BookForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    // eslint-disable-next-line no-unused-vars
     const formData = {
       category: e.target.category.value,
       title: e.target.title.value,
@@ -41,8 +42,7 @@ class BookForm extends Component {
       progress: e.target.progress.value,
       summary: e.target.summary.value,
     };
-    // eslint-disable-next-line no-console
-    console.log(formData);
+
     this.setState(defaultState);
   }
 
