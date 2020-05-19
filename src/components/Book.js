@@ -38,7 +38,7 @@ const Book = book => {
           <span>Completed</span>
         </div>
       </div>
-      <span></span>
+      <span />
       <div className="summary-remove">
         <p>{summary}</p>
         <button type="button" onClick={() => eraseBook(id)}>ERASE</button>

@@ -101,10 +101,72 @@ td button {
     margin: 15px 0;
 }
 
-form {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    margin: 0 auto;
-    min-width: 1200px;
+.bookform-section {
+    border-top: 2px solid #f5f6fa;
+    width: 1200px;
+    margin: 20px auto;
+    padding-top: 25px;
+}
+
+.bookform-section h4 {
+    font-family: var(--font-montserrat);
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--form-gray);
+    margin-bottom: 15px;
+}
+
+.bookform-section form {
+    display:flex;
+    justify-content: space-between;
+}
+
+form input {
+    height:45px;
+    border-radius: 4px;
+}
+
+form input::placeholder, textarea::placeholder {
+    color: var( --disabled-gray);
+    padding: 10px;
+
+}
+
+
+form .input {
+    width: 80%
+}
+
+.input .info {
+    margin-bottom: 10px
+}
+
+.info .title {
+    width:50%
+}
+
+.info .author {
+    width:30%
+}
+
+.info .category {
+    width:15%;
+    height:45px;
+    padding:10px;
+    border-radius:4px;
+    background-color:white
+}
+
+.input .summary {
+    display: flex;
+    align-items: flex-start;
+}
+
+.summary textarea {
+    width:50%;
+    border-radius: 4px;
+}
+
+.add-book {
+    width: 20%
 }

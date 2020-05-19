@@ -6,8 +6,8 @@ const defaultState = {
   category: '',
   title: '',
   author: '',
-  pages: 0,
-  progress: 0,
+  pages: '',
+  progress: '',
   summary: '',
 };
 
@@ -52,54 +52,68 @@ class BookForm extends Component {
       category, title, author, pages, progress, summary,
     } = state;
     return (
-      <div>
+      <div className="bookform-section">
         <h4>ADD NEW BOOK</h4>
         <form onSubmit={handleSubmit}>
-          <input
-            id="title"
-            value={title}
-            placeholder="Book Title"
-            onChange={e => handleChange('title', e.target.value)}
-          />
-          <select
-            id="category"
-            onChange={e => handleChange('category', e.target.value)}
-            value={category}
-          >
-            {categories.map(thisCategory => (
-              <option
-                key={Math.random()}
-                value={thisCategory}
+          <div className="input">
+            <div className="info">
+              <input
+                id="title"
+                className="title"
+                value={title}
+                placeholder="Book Title"
+                onChange={e => handleChange('title', e.target.value)}
+              />
+              <input
+                id="author"
+                className="author"
+                value={author}
+                placeholder="Author"
+                onChange={e => handleChange('author', e.target.value)}
+              />
+              <select
+                id="category"
+                className="category"
+                onChange={e => handleChange('category', e.target.value)}
+                value={category}
               >
-                {thisCategory}
-              </option>
-            ))}
-          </select>
-          <input
-            id="pages"
-            value={pages}
-            placeholder="# Pages"
-            onChange={e => handleChange('pages', e.target.value)}
-          />
-          <input
-            id="progress"
-            value={progress}
-            placeholder="Current Page"
-            onChange={e => handleChange('progress', e.target.value)}
-          />
-          <input
-            id="author"
-            value={author}
-            placeholder="Author"
-            onChange={e => handleChange('author', e.target.value)}
-          />
-          <textarea
-            id="summary"
-            value={summary}
-            placeholder="Summary"
-            onChange={e => handleChange('summary', e.target.value)}
-          />
-          <button type="submit">Add Book</button>
+                {categories.map(thisCategory => (
+                  <option
+                    key={Math.random()}
+                    value={thisCategory}
+                  >
+                    {thisCategory}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="summary">
+              <textarea
+                id="summary"
+                value={summary}
+                placeholder="Summary"
+                onChange={e => handleChange('summary', e.target.value)}
+              />
+              <input
+                id="pages"
+                className="pages"
+                value={pages}
+                placeholder="Total Pages"
+                onChange={e => handleChange('pages', e.target.value)}
+              />
+              <input
+                id="progress"
+                className="progress"
+                value={progress}
+                placeholder="Current Page"
+                onChange={e => handleChange('progress', e.target.value)}
+              />
+
+            </div>
+          </div>
+          <div className="add-book">
+            <button type="submit">Add Book</button>
+          </div>
         </form>
       </div>
     );
