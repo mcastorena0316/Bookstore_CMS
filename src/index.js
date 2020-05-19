@@ -6,6 +6,9 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import rootReducer from './reducers';
 
+import './index.css';
+import './App.css';
+
 const testingBooks = [{
   category: 'Biography',
   title: 'Hillary Clinton',

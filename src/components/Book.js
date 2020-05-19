@@ -22,15 +22,15 @@ const Book = book => {
       <div className="info">
         <h6>{category}</h6>
         <h1>{title}</h1>
-        <p>{author}</p>
-        <span>
+        <h5>{author}</h5>
+        <h5>
           ID:
           {id}
-        </span>
+        </h5>
       </div>
       <div className="progress">
         <div className="ring" />
-        <div className="Percentage">
+        <div className="percentage">
           <h2>
             {calculateProgress(progress, pages)}
             %
@@ -38,9 +38,10 @@ const Book = book => {
           <span>Completed</span>
         </div>
       </div>
+      <span></span>
       <div className="summary-remove">
         <p>{summary}</p>
-        <button type="button" onClick={() => eraseBook(id)}>Erase</button>
+        <button type="button" onClick={() => eraseBook(id)}>ERASE</button>
       </div>
     </>
   );

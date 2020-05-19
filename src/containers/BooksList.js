@@ -17,11 +17,12 @@ const BooksList = ({ category, books, eraseBook }) => {
         <tbody>
           {filtered.map(book => (
             <tr key={book.id}>
-              <td>
+              <td className="bordered">
                 <Book
                   id={book.id}
                   category={book.category}
                   title={book.title}
+                  author={book.author}
                   pages={book.pages}
                   progress={book.progress}
                   summary={book.summary}
