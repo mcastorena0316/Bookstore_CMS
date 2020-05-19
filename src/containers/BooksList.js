@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
+import { removeBook } from '../actions';
 
 /**
  * BookList
  * A table with book
  */
 
-const BooksList = ({ category, books }) => {
+const BooksList = ({ category, books, eraseBook }) => {
   const filtered = category === 'All' ? books : books.filter(book => book.category === category);
   if (filtered.length >= 1) {
     return (
@@ -24,6 +25,7 @@ const BooksList = ({ category, books }) => {
                   pages={book.pages}
                   progress={book.progress}
                   summary={book.summary}
+                  eraseBook={eraseBook}
                 />
               </td>
             </tr>
@@ -42,6 +44,7 @@ const BooksList = ({ category, books }) => {
 BooksList.defaultProps = {
   category: 'All',
   books: [],
+  eraseBook: () => {},
 };
 
 BooksList.propTypes = {
@@ -57,10 +60,15 @@ BooksList.propTypes = {
       summary: PropTypes.string,
     }).isRequired,
   ),
+  eraseBook: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   books: state.books,
 });
 
-export default connect(mapStateToProps, null)(BooksList);
+const mapDispatchToProps = dispatch => ({
+  eraseBook: id =>  dispatch(removeBook(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BooksList);

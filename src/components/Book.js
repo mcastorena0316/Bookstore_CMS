@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { removeBook } from '../actions';
 
 /**
  * Book
@@ -71,8 +69,4 @@ Book.propTypes = {
   eraseBook: PropTypes.func,
 };
 
-const mapDispatchToProps = dispatch => ({
-  eraseBook: id => dispatch(removeBook(id)),
-});
-
-export default connect(null, mapDispatchToProps)(Book);
+export default Book;
