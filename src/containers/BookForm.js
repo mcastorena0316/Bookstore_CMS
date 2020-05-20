@@ -45,6 +45,7 @@ class BookForm extends Component {
       pages: e.target.pages.value,
       progress: e.target.progress.value,
       summary: e.target.summary.value,
+      id: Math.floor(Math.random() * 1000),
     };
 
     addBook(formData);
