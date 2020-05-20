@@ -48,13 +48,13 @@ class BookForm extends Component {
       id: Math.floor(Math.random() * 1000),
     };
     if (formData.progress > formData.pages) {
-      return this.setState(prevState=>({
+      return this.setState(prevState => ({
         ...prevState,
-        error: "Progress is bigger than Total of pages!"
-      }))
+        error: 'Progress is bigger than Total of pages!',
+      }));
     }
     addBook(formData);
-    this.setState(defaultState);
+    return this.setState(defaultState);
   }
 
   render() {
@@ -67,7 +67,7 @@ class BookForm extends Component {
         <h4>ADD NEW BOOK</h4>
         {
           error && (
-          <p >{error}</p>
+          <p>{error}</p>
           )
         }
         <form onSubmit={handleSubmit}>
@@ -128,7 +128,7 @@ class BookForm extends Component {
             placeholder="Summary"
             onChange={e => handleChange('summary', e.target.value)}
           />
-          <button type="submit">Add Book</button>
+          <button type="submit">ADD BOOK</button>
         </form>
       </div>
     );
