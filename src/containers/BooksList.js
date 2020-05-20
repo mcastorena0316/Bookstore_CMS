@@ -25,6 +25,7 @@ const BooksList = ({ category, books, eraseBook }) => {
                 id={book.id}
                 category={book.category}
                 title={book.title}
+                author={book.author}
                 pages={book.pages}
                 progress={book.progress}
                 summary={book.summary}

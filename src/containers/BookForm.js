@@ -118,7 +118,7 @@ class BookForm extends Component {
             </div>
           </div>
           <div className="add-book">
-            <button type="submit">Add Book</button>
+            <button type="submit">ADD BOOK</button>
           </div>
         </form>
       </div>
