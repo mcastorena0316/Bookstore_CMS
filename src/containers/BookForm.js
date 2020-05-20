@@ -11,6 +11,7 @@ const defaultState = {
   pages: '',
   progress: '',
   summary: '',
+  error: '',
 };
 
 /**
@@ -36,7 +37,6 @@ class BookForm extends Component {
 
   handleSubmit(e) {
     const { addBook } = this.props;
-
     e.preventDefault();
     const formData = {
       category: e.target.category.value,
@@ -47,7 +47,12 @@ class BookForm extends Component {
       summary: e.target.summary.value,
       id: Math.floor(Math.random() * 1000),
     };
-
+    if (formData.progress > formData.pages) {
+      return this.setState(prevState=>({
+        ...prevState,
+        error: "Progress is bigger than Total of pages!"
+      }))
+    }
     addBook(formData);
     this.setState(defaultState);
   }
@@ -55,15 +60,22 @@ class BookForm extends Component {
   render() {
     const { handleSubmit, handleChange, state } = this;
     const {
-      category, title, author, pages, progress, summary,
+      category, title, author, pages, progress, summary, error,
     } = state;
     return (
       <div>
         <h4>ADD NEW BOOK</h4>
+        {
+          error && (
+          <p >{error}</p>
+          )
+        }
         <form onSubmit={handleSubmit}>
           <input
+            required
             id="title"
             value={title}
+            minLength="2"
             placeholder="Book Title"
             onChange={e => handleChange('title', e.target.value)}
           />
@@ -85,17 +97,28 @@ class BookForm extends Component {
             id="pages"
             value={pages}
             placeholder="# Pages"
+            type="number"
+            required
+            min="1"
+            max="2000"
             onChange={e => handleChange('pages', e.target.value)}
           />
           <input
             id="progress"
             value={progress}
+            type="number"
+            required
+            min="0"
+            max="2000"
             placeholder="Current Page"
             onChange={e => handleChange('progress', e.target.value)}
           />
           <input
+            required
             id="author"
             value={author}
+            type="text"
+            autoComplete="name"
             placeholder="Author"
             onChange={e => handleChange('author', e.target.value)}
           />
