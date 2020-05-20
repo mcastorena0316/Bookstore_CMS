@@ -47,7 +47,7 @@ class BookForm extends Component {
       summary: e.target.summary.value,
       id: Math.floor(Math.random() * 1000),
     };
-    if (formData.progress > formData.pages) {
+    if (parseInt(formData.progress, 10) > parseInt(formData.pages, 10)) {
       return this.setState(prevState => ({
         ...prevState,
         error: 'Progress is bigger than Total of pages!',
