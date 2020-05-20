@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addBook } from '../actions';
 
 const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
 const defaultState = {
   category: '',
   title: '',
   author: '',
-  pages: 0,
-  progress: 0,
+  pages: '',
+  progress: '',
   summary: '',
 };
 
@@ -17,8 +19,8 @@ const defaultState = {
  * Add books
  */
 class BookForm extends Component {
-  constructor() { // (props) {
-    super(); // (props);
+  constructor(props) {
+    super(props);
     this.state = defaultState;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,8 +34,9 @@ class BookForm extends Component {
   }
 
   handleSubmit(e) {
+    const { addBook } = this.props;
+
     e.preventDefault();
-    // eslint-disable-next-line no-unused-vars
     const formData = {
       category: e.target.category.value,
       title: e.target.title.value,
@@ -43,6 +46,7 @@ class BookForm extends Component {
       summary: e.target.summary.value,
     };
 
+    addBook(formData);
     this.setState(defaultState);
   }
 
@@ -105,4 +109,18 @@ class BookForm extends Component {
     );
   }
 }
-export default BookForm;
+
+BookForm.defaultProps = {
+  addBook: () => {},
+};
+
+BookForm.propTypes = {
+  addBook: PropTypes.func,
+};
+
+const mapDispatchToProps = dispatch => ({
+  addBook: id => dispatch(addBook(id)),
+});
+
+
+export default connect(null, mapDispatchToProps)(BookForm);

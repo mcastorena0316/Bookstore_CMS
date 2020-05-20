@@ -10,7 +10,7 @@ import React from 'react';
 
 const Book = book => {
   const {
-    id, category, title, author, pages, progress, summary, eraseBook,
+    id, category, title, author, pages, progress, summary, handleRemoveBook,
   } = book;
 
   const calculateProgress = (numerator, denominator) => {
@@ -40,7 +40,7 @@ const Book = book => {
       </div>
       <div className="summary-remove">
         <p>{summary}</p>
-        <button type="button" onClick={() => eraseBook(id)}>Erase</button>
+        <button type="button" onClick={() => handleRemoveBook(book)}>Erase</button>
       </div>
     </>
   );

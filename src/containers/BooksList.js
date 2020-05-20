@@ -10,6 +10,10 @@ import { removeBook } from '../actions';
  */
 
 const BooksList = ({ category, books, eraseBook }) => {
+  const handleRemoveBook = book => {
+    eraseBook(book.id);
+  };
+
   const filtered = category === 'All' ? books : books.filter(book => book.category === category);
   if (filtered.length >= 1) {
     return (
@@ -25,7 +29,7 @@ const BooksList = ({ category, books, eraseBook }) => {
                   pages={book.pages}
                   progress={book.progress}
                   summary={book.summary}
-                  eraseBook={eraseBook}
+                  handleRemoveBook={handleRemoveBook}
                 />
               </td>
             </tr>
