@@ -21,17 +21,16 @@ const BooksList = ({ category, books, eraseBook }) => {
         <tbody>
           {filtered.map(book => (
             <tr key={book.id}>
-              <td>
-                <Book
-                  id={book.id}
-                  category={book.category}
-                  title={book.title}
-                  pages={book.pages}
-                  progress={book.progress}
-                  summary={book.summary}
-                  handleRemoveBook={handleRemoveBook}
-                />
-              </td>
+              <Book
+                id={book.id}
+                category={book.category}
+                title={book.title}
+                pages={book.pages}
+                progress={book.progress}
+                summary={book.summary}
+                handleRemoveBook={handleRemoveBook}
+              />
+
             </tr>
           ))}
         </tbody>
@@ -59,8 +58,8 @@ BooksList.propTypes = {
       category: PropTypes.string,
       author: PropTypes.string,
       title: PropTypes.string,
-      pages: PropTypes.number,
-      progress: PropTypes.number,
+      pages: PropTypes.string,
+      progress: PropTypes.string,
       summary: PropTypes.string,
     }).isRequired,
   ),

@@ -19,7 +19,7 @@ const Book = book => {
   };
   return (
     <>
-      <div className="info">
+      <td className="info">
         <h6>{category}</h6>
         <h1>{title}</h1>
         <p>{author}</p>
@@ -27,8 +27,8 @@ const Book = book => {
           ID:
           {id}
         </span>
-      </div>
-      <div className="progress">
+      </td>
+      <td className="progress">
         <div className="ring" />
         <div className="Percentage">
           <h2>
@@ -37,11 +37,11 @@ const Book = book => {
           </h2>
           <span>Completed</span>
         </div>
-      </div>
-      <div className="summary-remove">
+      </td>
+      <td className="summary-remove">
         <p>{summary}</p>
         <button type="button" onClick={() => handleRemoveBook(book)}>Erase</button>
-      </div>
+      </td>
     </>
   );
 };
