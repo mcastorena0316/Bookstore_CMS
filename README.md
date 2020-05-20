@@ -64,6 +64,7 @@ Magic-books Inc. is a fictional company based in Germany. They have requested he
 - React-DOM
 - React-Create-App
 - Redux
+- PropTypes
 - ES6 syntax
 - Export/import ES6+ notation
 
@@ -72,6 +73,10 @@ Magic-books Inc. is a fictional company based in Germany. They have requested he
 - Basic `create-react-app` structure
 - Sets `stickler` on the repo
 - Sets `eslint` rules
+
+## `ESlint` test
+
+![ESlint](public/eslint.png)
 
 # Built With
 
