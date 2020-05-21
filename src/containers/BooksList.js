@@ -49,7 +49,6 @@ const BooksList = ({
           </tbody>
         </table>
       ) : <p>Please add a New Book!</p>}
-
     </>
   );
 };
