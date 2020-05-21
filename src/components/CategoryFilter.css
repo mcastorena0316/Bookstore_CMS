@@ -7,7 +7,6 @@ header, nav {
 
 nav {
     display:flex;
-    width: 1200px;
     margin: 0 auto;
 }
 
@@ -49,5 +48,10 @@ ul .category select {
         display: inline-block;
         font-size:13px;
         color: var(--dark)
+    }
+
+    nav {
+        width: 1200px;
+
     }
 }
