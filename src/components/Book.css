@@ -1,11 +1,11 @@
 
 table {
     margin: 20px auto !important;
-    min-width: 1200px;
+    min-width: 100%;
+    min-width: 100%;
 }
 
 tbody tr {
-    height: 170px;
     background-color: white;
     padding: 40px 35px;
     margin: 8px 0;
@@ -44,13 +44,12 @@ td.info h5 {
 
 td.progress {
     flex: 0 1 25%;
-    display: flex;
     align-items: center;
 }
 
 td.progress .ring {
-    width: 68px;
-    height: 68px;
+    width: 20px;
+    height: 20px;
     border-style: solid;
     border-width: 5px;
     border-image-source: linear-gradient(to bottom, #307bbe, #379cf6);
@@ -72,11 +71,14 @@ td.progress .percentage span{
 td .separator {    
     flex: 0 1 5%;
     border: solid 1px #e8e8e8;
-    height: 70px;
+    height: 80%;
     margin-right: 30px;
 }
 
 td.summary-remove {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding-left: 10px;
     flex: 0 1 25%;
     color: var(--dark);
@@ -88,3 +90,36 @@ td.summary-remove {
 td>button {
     margin: 15px 0;
 }
+
+@media only screen and (min-width: 1200px) {
+    .App table {
+        min-width: 1200px;
+    }
+
+    td .separator {
+        height: 70px;
+    }
+
+    .tbody tr {
+        height: 170px;
+    }
+
+    td.progress {
+        flex: 0 1 25%;
+        display: flex;
+        align-items: center;
+    }
+
+    td.progress .ring {
+        width: 68px;
+        height: 68px;
+    }
+  }
+
+  @media only screen and (min-width: 70px) {
+    .tbody tr {
+        height: 170px;
+        padding: 10px;
+        background-color: red;
+    }
+  }

@@ -1,7 +1,6 @@
 .bookform-section {
     border-top: 2px solid #f5f6fa;
-    width: 1200px;
-    margin: 20px auto;
+    margin: 10px;
     padding-top: 25px;
 }
 
@@ -14,8 +13,7 @@
 }
 
 .bookform-section form {
-    display:flex;
-    justify-content: space-between;
+    display:block;
 }
 
 form input {
@@ -32,7 +30,7 @@ form input::placeholder, textarea::placeholder {
 
 
 form .input {
-    width: 80%
+    width: 100%;
 }
 
 .input .info {
@@ -82,4 +80,21 @@ form .input {
 
 .title, .author, .summary>textarea, .pages {
     margin-right: 5px;
+}
+
+@media only screen and (min-width: 1200px) {
+    .bookform-section {
+        width: 1200px;
+        margin: 20px auto;
+        padding-top: 25px;
+    }
+
+    .bookform-section form {
+        display:flex;
+        justify-content: space-between;
+    }
+
+    form .input {
+        width: 80%;
+    }
 }

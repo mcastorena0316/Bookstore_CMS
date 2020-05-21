@@ -28,10 +28,8 @@ ul .brand {
 }
 
 ul .book {
-    font-size:13px;
-    color: var(--dark)
+    display: none;
 }
-
 
 ul .category span {
     font-size:13px;
@@ -43,4 +41,13 @@ ul .category select {
     padding:10px;
     border-radius:4px;
     background-color:white
+}
+
+
+@media only screen and (min-width: 1200px) {
+    ul .book {
+        display: inline-block;
+        font-size:13px;
+        color: var(--dark)
+    }
 }
