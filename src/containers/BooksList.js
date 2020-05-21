@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
 import { removeBook } from '../actions';
-
+import CategoryFilter from "../components/CategoryFilter.js";
 /**
  * BookList
  * A table with book
@@ -14,27 +14,41 @@ const BooksList = ({ category, books, eraseBook }) => {
     eraseBook(book.id);
   };
 
+  const handleFilterChange = (e) => {
+    const filter = e.target.value;
+    if (filter === "All") return;
+    console.log(filter)
+    // set filter in redux
+    return;
+  }
+
   const filtered = category === 'All' ? books : books.filter(book => book.category === category);
   if (filtered.length >= 1) {
     return (
-      <table>
-        <tbody>
-          {filtered.map(book => (
-            <tr key={book.id}>
-              <Book
-                id={book.id}
-                category={book.category}
-                title={book.title}
-                author={book.author}
-                pages={book.pages}
-                progress={book.progress}
-                summary={book.summary}
-                handleRemoveBook={handleRemoveBook}
-              />
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <>
+        <CategoryFilter 
+          category={category}
+          handleFilterChange={handleFilterChange}
+        />
+        <table>
+          <tbody>
+            {filtered.map(book => (
+              <tr key={book.id}>
+                <Book
+                  id={book.id}
+                  category={book.category}
+                  title={book.title}
+                  author={book.author}
+                  pages={book.pages}
+                  progress={book.progress}
+                  summary={book.summary}
+                  handleRemoveBook={handleRemoveBook}
+                />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
     );
   }
   return (
@@ -47,7 +61,7 @@ const BooksList = ({ category, books, eraseBook }) => {
 BooksList.defaultProps = {
   category: 'All',
   books: [],
-  eraseBook: () => {},
+  eraseBook: () => { },
 };
 
 BooksList.propTypes = {
