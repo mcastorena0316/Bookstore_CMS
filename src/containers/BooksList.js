@@ -10,6 +10,10 @@ import { removeBook } from '../actions';
  */
 
 const BooksList = ({ category, books, eraseBook }) => {
+  const handleRemoveBook = book => {
+    eraseBook(book.id);
+  };
+
   const filtered = category === 'All' ? books : books.filter(book => book.category === category);
   if (filtered.length >= 1) {
     return (
@@ -17,17 +21,16 @@ const BooksList = ({ category, books, eraseBook }) => {
         <tbody>
           {filtered.map(book => (
             <tr key={book.id}>
-              <td>
-                <Book
-                  id={book.id}
-                  category={book.category}
-                  title={book.title}
-                  pages={book.pages}
-                  progress={book.progress}
-                  summary={book.summary}
-                  eraseBook={eraseBook}
-                />
-              </td>
+              <Book
+                id={book.id}
+                category={book.category}
+                title={book.title}
+                author={book.author}
+                pages={book.pages}
+                progress={book.progress}
+                summary={book.summary}
+                handleRemoveBook={handleRemoveBook}
+              />
             </tr>
           ))}
         </tbody>
@@ -55,8 +58,8 @@ BooksList.propTypes = {
       category: PropTypes.string,
       author: PropTypes.string,
       title: PropTypes.string,
-      pages: PropTypes.number,
-      progress: PropTypes.number,
+      pages: PropTypes.string,
+      progress: PropTypes.string,
       summary: PropTypes.string,
     }).isRequired,
   ),

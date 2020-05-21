@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addBook } from '../actions';
 
 const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
 const defaultState = {
   category: '',
   title: '',
   author: '',
-  pages: 0,
-  progress: 0,
+  pages: '',
+  progress: '',
   summary: '',
+  error: '',
 };
 
 /**
@@ -16,9 +19,10 @@ const defaultState = {
  *
  * Add books
  */
+
 class BookForm extends Component {
-  constructor() { // (props) {
-    super(); // (props);
+  constructor(props) {
+    super(props);
     this.state = defaultState;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,8 +36,8 @@ class BookForm extends Component {
   }
 
   handleSubmit(e) {
+    const { addBook } = this.props;
     e.preventDefault();
-    // eslint-disable-next-line no-unused-vars
     const formData = {
       category: e.target.category.value,
       title: e.target.title.value,
@@ -41,23 +45,37 @@ class BookForm extends Component {
       pages: e.target.pages.value,
       progress: e.target.progress.value,
       summary: e.target.summary.value,
+      id: Math.floor(Math.random() * 1000),
     };
-
-    this.setState(defaultState);
+    if (parseInt(formData.progress, 10) > parseInt(formData.pages, 10)) {
+      return this.setState(prevState => ({
+        ...prevState,
+        error: 'Progress is bigger than Total of pages!',
+      }));
+    }
+    addBook(formData);
+    return this.setState(defaultState);
   }
 
   render() {
     const { handleSubmit, handleChange, state } = this;
     const {
-      category, title, author, pages, progress, summary,
+      category, title, author, pages, progress, summary, error,
     } = state;
     return (
       <div>
         <h4>ADD NEW BOOK</h4>
+        {
+          error && (
+          <p>{error}</p>
+          )
+        }
         <form onSubmit={handleSubmit}>
           <input
+            required
             id="title"
             value={title}
+            minLength="2"
             placeholder="Book Title"
             onChange={e => handleChange('title', e.target.value)}
           />
@@ -79,17 +97,28 @@ class BookForm extends Component {
             id="pages"
             value={pages}
             placeholder="# Pages"
+            type="number"
+            required
+            min="1"
+            max="2000"
             onChange={e => handleChange('pages', e.target.value)}
           />
           <input
             id="progress"
             value={progress}
+            type="number"
+            required
+            min="0"
+            max="2000"
             placeholder="Current Page"
             onChange={e => handleChange('progress', e.target.value)}
           />
           <input
+            required
             id="author"
             value={author}
+            type="text"
+            autoComplete="name"
             placeholder="Author"
             onChange={e => handleChange('author', e.target.value)}
           />
@@ -99,10 +128,24 @@ class BookForm extends Component {
             placeholder="Summary"
             onChange={e => handleChange('summary', e.target.value)}
           />
-          <button type="submit">Add Book</button>
+          <button type="submit">ADD BOOK</button>
         </form>
       </div>
     );
   }
 }
-export default BookForm;
+
+BookForm.defaultProps = {
+  addBook: () => {},
+};
+
+BookForm.propTypes = {
+  addBook: PropTypes.func,
+};
+
+const mapDispatchToProps = dispatch => ({
+  addBook: id => dispatch(addBook(id)),
+});
+
+
+export default connect(null, mapDispatchToProps)(BookForm);
