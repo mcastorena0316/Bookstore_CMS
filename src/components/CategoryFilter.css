@@ -1,0 +1,46 @@
+
+header, nav {
+    background-color: white;
+    height: 95px;
+    border-bottom: solid 1px #e8e8e8;
+}
+
+nav {
+    display:flex;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin-right:40px;
+}
+
+ul .brand {
+    font-size:30px;
+    color: var(--main);
+    font-weight: bold;
+}
+
+ul .book {
+    font-size:13px;
+    color: var(--dark)
+}
+
+
+ul .category span {
+    font-size:13px;
+    color: var(--category-gray);
+    margin-right: 10px; 
+}
+
+ul .category select {
+    padding:10px;
+    border-radius:4px;
+    background-color:white
+}

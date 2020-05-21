@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './CategoryFilter.css';
 
 const categories = ['All', 'Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
 
@@ -14,7 +15,7 @@ const CategoryFilter = ({ filter = 'All', handleFilterChange }) => (
           <span>BOOKS</span>
         </li>
         <li className="category">
-          <span>Categories: </span>
+          <span>CATEGORIES: </span>
           <select
             id="category"
             onChange={handleFilterChange}
