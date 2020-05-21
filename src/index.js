@@ -6,17 +6,17 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import rootReducer from './reducers';
 
-const testingBooks = {
+const defaultState = {
   filter: 'All',
   books: [
     {
-      category: 'Biography',
-      title: 'Hillary Clinton',
-      author: 'Hillary Clinton',
+      category: 'Kids',
+      title: 'The litle prince',
+      author: 'Antoine de Saint-Exupéry',
       pages: '4231',
       progress: '200',
-      summary: 'This is a biography about Hillary Clinton',
-      id: Math.floor(Math.random() * 10000),
+      summary: 'A child searching for his rose',
+      id: Math.floor(Math.random() * 1000),
     }, {
       category: 'Horror',
       title: 'The shining',
@@ -24,16 +24,16 @@ const testingBooks = {
       pages: '213',
       progress: '52',
       summary: 'Horror story about a haunted hotel',
-      id: Math.floor(Math.random() * 10000),
+      id: Math.floor(Math.random() * 1000),
     }],
 };
 
-const store = createStore(rootReducer(testingBooks));
+const store = createStore(rootReducer(defaultState));
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App books={testingBooks} />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

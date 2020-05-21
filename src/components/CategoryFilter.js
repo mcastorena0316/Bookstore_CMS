@@ -8,12 +8,13 @@ const CategoryFilter = ({ filter = 'All', handleFilterChange }) => (
     <nav>
       <ul>
         <li className="brand">
-          Bookstore CMS
+          <span>Bookstore CMS</span>
         </li>
         <li className="book">
-          BOOKS
+          <span>BOOKS</span>
         </li>
         <li className="category">
+          <span>Categories: </span>
           <select
             id="category"
             onChange={handleFilterChange}

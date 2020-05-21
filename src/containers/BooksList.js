@@ -2,33 +2,34 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
-import { removeBook } from '../actions';
+import { removeBook, filterCategory } from '../actions';
 import CategoryFilter from '../components/CategoryFilter';
+
 /**
  * BookList
  * A table with book
  */
 
-const BooksList = ({ category, books, eraseBook }) => {
+const BooksList = ({
+  category, books, eraseBook, filterCategory,
+}) => {
   const handleRemoveBook = book => {
     eraseBook(book.id);
   };
 
   const handleFilterChange = e => {
     const filter = e.target.value;
-    if (filter === 'All') return;
-    console.log(filter);
-    // set filter in redux
+    filterCategory(filter);
   };
 
   const filtered = category === 'All' ? books : books.filter(book => book.category === category);
-  if (filtered.length >= 1) {
-    return (
-      <>
-        <CategoryFilter
-          category={category}
-          handleFilterChange={handleFilterChange}
-        />
+  return (
+    <>
+      <CategoryFilter
+        filter={category}
+        handleFilterChange={handleFilterChange}
+      />
+      {filtered.length >= 1 ? (
         <table>
           <tbody>
             {filtered.map(book => (
@@ -47,13 +48,9 @@ const BooksList = ({ category, books, eraseBook }) => {
             ))}
           </tbody>
         </table>
-      </>
-    );
-  }
-  return (
-    <div>
-      Please add a Book!
-    </div>
+      ) : <p>Please add a New Book!</p>}
+
+    </>
   );
 };
 
@@ -61,6 +58,7 @@ BooksList.defaultProps = {
   category: 'All',
   books: [],
   eraseBook: () => { },
+  filterCategory: () => { },
 };
 
 BooksList.propTypes = {
@@ -77,14 +75,18 @@ BooksList.propTypes = {
     }).isRequired,
   ),
   eraseBook: PropTypes.func,
+  filterCategory: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   books: state.books,
+  category: state.filter,
 });
 
 const mapDispatchToProps = dispatch => ({
   eraseBook: id => dispatch(removeBook(id)),
+  filterCategory: category => dispatch(filterCategory(category)),
 });
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksList);
