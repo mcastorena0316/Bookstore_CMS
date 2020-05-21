@@ -1,5 +1,5 @@
 import React from 'react';
-import "./circle.css"
+import './circle.css';
 
 /**
  * Book
@@ -33,8 +33,8 @@ const Book = book => {
       <td className="progress">
         <div className={`c100 p${calculateProgress(progress, pages)}`}>
           <div className="slice">
-            <div className="bar"></div>
-            <div className="fill"></div>
+            <div className="bar" />
+            <div className="fill" />
           </div>
         </div>
         <div className="percentage">
@@ -46,7 +46,7 @@ const Book = book => {
         </div>
       </td>
       <td>
-        <div className="separator"></div>
+        <div className="separator" />
       </td>
       <td className="summary-remove">
         <p>{summary}</p>
