@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
 import { removeBook } from '../actions';
-import CategoryFilter from "../components/CategoryFilter.js";
+import CategoryFilter from '../components/CategoryFilter';
 /**
  * BookList
  * A table with book
@@ -14,19 +14,18 @@ const BooksList = ({ category, books, eraseBook }) => {
     eraseBook(book.id);
   };
 
-  const handleFilterChange = (e) => {
+  const handleFilterChange = e => {
     const filter = e.target.value;
-    if (filter === "All") return;
-    console.log(filter)
+    if (filter === 'All') return;
+    console.log(filter);
     // set filter in redux
-    return;
-  }
+  };
 
   const filtered = category === 'All' ? books : books.filter(book => book.category === category);
   if (filtered.length >= 1) {
     return (
       <>
-        <CategoryFilter 
+        <CategoryFilter
           category={category}
           handleFilterChange={handleFilterChange}
         />
