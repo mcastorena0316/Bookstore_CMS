@@ -11,6 +11,7 @@ const defaultState = {
   pages: '',
   progress: '',
   summary: '',
+  error: '',
 };
 
 /**
@@ -36,7 +37,6 @@ class BookForm extends Component {
 
   handleSubmit(e) {
     const { addBook } = this.props;
-
     e.preventDefault();
     const formData = {
       category: e.target.category.value,
@@ -47,31 +47,46 @@ class BookForm extends Component {
       summary: e.target.summary.value,
       id: Math.floor(Math.random() * 1000),
     };
-
+    if (parseInt(formData.progress, 10) > parseInt(formData.pages, 10)) {
+      return this.setState(prevState => ({
+        ...prevState,
+        error: 'Progress is bigger than Total of pages!',
+      }));
+    }
     addBook(formData);
-    this.setState(defaultState);
+    return this.setState(defaultState);
   }
 
   render() {
     const { handleSubmit, handleChange, state } = this;
     const {
-      category, title, author, pages, progress, summary,
+      category, title, author, pages, progress, summary, error,
     } = state;
     return (
       <div className="bookform-section">
         <h4>ADD NEW BOOK</h4>
+        {
+          error && (
+          <p>{error}</p>
+          )
+        }
         <form onSubmit={handleSubmit}>
           <div className="input">
             <div className="info">
               <input
+                required
                 id="title"
                 className="title"
                 value={title}
+                minLength="2"
                 placeholder="Book Title"
                 onChange={e => handleChange('title', e.target.value)}
               />
               <input
+                required
                 id="author"
+                type="text"
+                autoComplete="name"
                 className="author"
                 value={author}
                 placeholder="Author"
@@ -101,20 +116,27 @@ class BookForm extends Component {
                 onChange={e => handleChange('summary', e.target.value)}
               />
               <input
+                required
                 id="pages"
                 className="pages"
                 value={pages}
+                min="1"
+                max="2000"
+                type="number"
                 placeholder="Total Pages"
                 onChange={e => handleChange('pages', e.target.value)}
               />
               <input
+                required
                 id="progress"
                 className="progress"
+                min="0"
+                max="2000"
+                type="number"
                 value={progress}
                 placeholder="Current Page"
                 onChange={e => handleChange('progress', e.target.value)}
               />
-
             </div>
           </div>
           <div className="add-book">

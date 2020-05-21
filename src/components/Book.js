@@ -50,7 +50,7 @@ const Book = book => {
       </td>
       <td className="summary-remove">
         <p>{summary}</p>
-        <button type="button" onClick={() => handleRemoveBook(book)}>Erase</button>
+        <button type="button" onClick={() => handleRemoveBook(book)}>ERASE</button>
       </td>
     </>
   );
