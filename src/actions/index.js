@@ -1,16 +1,18 @@
-const CREATE_BOOK = 'CREATE_BOOK';
-const REMOVE_BOOK = 'REMOVE_BOOK';
+export const CREATE_BOOK = 'CREATE_BOOK';
+export const REMOVE_BOOK = 'REMOVE_BOOK';
+export const CHANGE_FILTER = 'CHANGE_FILTER';
 
-const addBook = book => ({
+export const addBook = book => ({
   type: CREATE_BOOK,
   payload: book,
 });
 
-const removeBook = id => ({
+export const removeBook = id => ({
   type: REMOVE_BOOK,
   payload: id,
 });
 
-export {
-  CREATE_BOOK, REMOVE_BOOK, addBook, removeBook,
-};
+export const filterCategory = category => ({
+  type: CHANGE_FILTER,
+  payload: category,
+});

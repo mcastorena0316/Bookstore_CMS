@@ -2,52 +2,62 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Book from '../components/Book';
-import { removeBook } from '../actions';
+import { removeBook, filterCategory } from '../actions';
+import CategoryFilter from '../components/CategoryFilter';
 
 /**
  * BookList
  * A table with book
  */
 
-const BooksList = ({ category, books, eraseBook }) => {
+const BooksList = ({
+  category, books, eraseBook, filterCategory,
+}) => {
   const handleRemoveBook = book => {
     eraseBook(book.id);
   };
 
+  const handleFilterChange = e => {
+    const filter = e.target.value;
+    filterCategory(filter);
+  };
+
   const filtered = category === 'All' ? books : books.filter(book => book.category === category);
-  if (filtered.length >= 1) {
-    return (
-      <table>
-        <tbody>
-          {filtered.map(book => (
-            <tr key={book.id}>
-              <Book
-                id={book.id}
-                category={book.category}
-                title={book.title}
-                author={book.author}
-                pages={book.pages}
-                progress={book.progress}
-                summary={book.summary}
-                handleRemoveBook={handleRemoveBook}
-              />
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    );
-  }
   return (
-    <div>
-      Please add a Book!
-    </div>
+    <>
+      <CategoryFilter
+        filter={category}
+        handleFilterChange={handleFilterChange}
+      />
+      {filtered.length >= 1 ? (
+        <table>
+          <tbody>
+            {filtered.map(book => (
+              <tr key={book.id}>
+                <Book
+                  id={book.id}
+                  category={book.category}
+                  title={book.title}
+                  author={book.author}
+                  pages={book.pages}
+                  progress={book.progress}
+                  summary={book.summary}
+                  handleRemoveBook={handleRemoveBook}
+                />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : <p>Please add a New Book!</p>}
+    </>
   );
 };
 
 BooksList.defaultProps = {
   category: 'All',
   books: [],
-  eraseBook: () => {},
+  eraseBook: () => { },
+  filterCategory: () => { },
 };
 
 BooksList.propTypes = {
@@ -64,14 +74,18 @@ BooksList.propTypes = {
     }).isRequired,
   ),
   eraseBook: PropTypes.func,
+  filterCategory: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   books: state.books,
+  category: state.filter,
 });
 
 const mapDispatchToProps = dispatch => ({
   eraseBook: id => dispatch(removeBook(id)),
+  filterCategory: category => dispatch(filterCategory(category)),
 });
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksList);
