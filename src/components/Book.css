@@ -1,13 +1,6 @@
-body, html, #root, .App {
-    background-color: #fafafa; 
-    width: 100vw;
-    font-family: var(--font-montserrat);
-    width: 100%;
-    margin: 0;
-}
 
 table {
-    margin: 20px auto;
+    margin: 20px auto !important;
     min-width: 1200px;
 }
 
@@ -94,90 +87,4 @@ td.summary-remove {
 
 td>button {
     margin: 15px 0;
-}
-
-.bookform-section {
-    border-top: 2px solid #f5f6fa;
-    width: 1200px;
-    margin: 20px auto;
-    padding-top: 25px;
-}
-
-.bookform-section h4 {
-    font-family: var(--font-montserrat);
-    font-weight: bold;
-    font-size: 20px;
-    color: var(--form-gray);
-    margin-bottom: 15px;
-}
-
-.bookform-section form {
-    display:flex;
-    justify-content: space-between;
-}
-
-form input {
-    height:45px;
-    border-radius: 4px;
-    padding: 10px;
-    background-color: white;
-}
-
-form input::placeholder, textarea::placeholder {
-    color: var( --disabled-gray);
-    padding: 10px;
-}
-
-
-form .input {
-    width: 80%
-}
-
-.input .info {
-    margin-bottom: 10px
-}
-
-.info .title {
-    width:50%
-}
-
-.info .author {
-    width:30%
-}
-
-.info .category {
-    width:15%;
-    height:45px;
-    padding:10px;
-    border-radius:4px;
-    background-color:white
-}
-
-.input .summary {
-    display: flex;
-    align-items: flex-start;
-}
-
-.summary textarea {
-    width:50%;
-    border-radius: 4px;
-    padding: 10px;
-}
-
-.summary input {
-    width: 22%;
-}
-
-.add-book {
-    width: 20%
-}
-
-.add-book button {
-    padding: 10px 0;
-    height: 40px;
-    font-weight: bold;
-}
-
-.title, .author, .summary>textarea, .pages {
-    margin-right: 5px;
 }
