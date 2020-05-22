@@ -23,6 +23,10 @@ form input {
     background-color: white;
 }
 
+form input:invalid {
+    border: dashed 1px red;
+}
+
 form input::placeholder, textarea::placeholder {
     color: var( --disabled-gray);
     padding: 10px;
@@ -80,6 +84,11 @@ form .input {
 
 .title, .author, .summary>textarea, .pages {
     margin-right: 5px;
+}
+
+.bookform-section>p {
+    color: red;
+    font-weight: bold;
 }
 
 @media only screen and (min-width: 1200px) {
