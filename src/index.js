@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import rootReducer from './reducers';
+import './index.css';
 
 const defaultState = {
   filter: 'All',

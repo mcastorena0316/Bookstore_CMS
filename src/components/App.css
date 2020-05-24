@@ -1,0 +1,14 @@
+body, html, #root, .App {
+    background-color: #fafafa; 
+    width: 100vw;
+    font-family: var(--font-montserrat);
+    width: 100%;
+    margin: 0;
+}
+
+.App>p {
+  width: 1200px;
+  margin: 20px auto;
+  color: var(--main);
+  font-weight: bold;
+}

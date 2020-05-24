@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addBook } from '../actions';
+import AddBook from '../components/AddBook';
 
-const categories = ['Action', 'Biography', 'History', 'Horror', 'Kids', 'Learning', 'Sci-Fi'];
 const defaultState = {
   category: '',
   title: '',
@@ -63,73 +63,23 @@ class BookForm extends Component {
       category, title, author, pages, progress, summary, error,
     } = state;
     return (
-      <div>
+      <div className="bookform-section">
         <h4>ADD NEW BOOK</h4>
         {
           error && (
           <p>{error}</p>
           )
         }
-        <form onSubmit={handleSubmit}>
-          <input
-            required
-            id="title"
-            value={title}
-            minLength="2"
-            placeholder="Book Title"
-            onChange={e => handleChange('title', e.target.value)}
-          />
-          <select
-            id="category"
-            onChange={e => handleChange('category', e.target.value)}
-            value={category}
-          >
-            {categories.map(thisCategory => (
-              <option
-                key={Math.random()}
-                value={thisCategory}
-              >
-                {thisCategory}
-              </option>
-            ))}
-          </select>
-          <input
-            id="pages"
-            value={pages}
-            placeholder="# Pages"
-            type="number"
-            required
-            min="1"
-            max="2000"
-            onChange={e => handleChange('pages', e.target.value)}
-          />
-          <input
-            id="progress"
-            value={progress}
-            type="number"
-            required
-            min="0"
-            max="2000"
-            placeholder="Current Page"
-            onChange={e => handleChange('progress', e.target.value)}
-          />
-          <input
-            required
-            id="author"
-            value={author}
-            type="text"
-            autoComplete="name"
-            placeholder="Author"
-            onChange={e => handleChange('author', e.target.value)}
-          />
-          <textarea
-            id="summary"
-            value={summary}
-            placeholder="Summary"
-            onChange={e => handleChange('summary', e.target.value)}
-          />
-          <button type="submit">ADD BOOK</button>
-        </form>
+        <AddBook
+          category={category}
+          author={author}
+          title={title}
+          pages={pages}
+          progress={progress}
+          summary={summary}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
       </div>
     );
   }
