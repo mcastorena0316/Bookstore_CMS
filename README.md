@@ -57,7 +57,7 @@
 
 ## The Project
 
-Magic-books Inc. is a fictional company based in Germany. They have requested help to build the front-end of an application that will help them organize and manage their bookstore. They want it to be fast, dynamic and responsive to their actions and therefore we decided to build it with React & Redux.
+Magic-books Inc. is a fictional company based in Germany. They have requested help to build the front-end of an application that will help them organize and manage their bookstore. They want it to be fast, dynamic, and responsive to their actions and therefore we decided to build it with React & Redux.
 
 - Linters
 - React
@@ -89,7 +89,7 @@ Magic-books Inc. is a fictional company based in Germany. They have requested he
 
 # How to run this project
 
-We used `create-react-app` to initialize this project, so it is configurated to be easy to run. Just follow this instructions.
+We used `create-react-app` to initialize this project, so it is configurated to be easy to run. Just follow these instructions.
 
 ## Prerequisites
 
@@ -212,7 +212,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 [![contributions welcome][contributions-welcome]][issues-url]
 
-🤝 Contributions, issues and feature requests are welcome!
+🤝 Contributions, issues, and feature requests are welcome! 
 Feel free to check the [issues page][issues-url].
 
 # Show your support
