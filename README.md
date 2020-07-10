@@ -45,6 +45,7 @@
     - [`npm run build`](#npm-run-build)
   - [Learn More](#learn-more)
 - [Authors](#authors)
+- [Potential features](#potential-features)
 - [Contributing](#contributing)
 - [Show your support](#show-your-support)
 - [License](#license)
@@ -207,6 +208,13 @@ To learn React, check out the [React documentation](https://reactjs.org/).
     </td>
   </tr>
 </table>
+
+# Potential Features
+
+* Create Back-End API for storing books.
+* Add Edit functionality.
+* Create a new view with detailed information about each book where the user can upload a picture.
+
 
 # Contributing
 
